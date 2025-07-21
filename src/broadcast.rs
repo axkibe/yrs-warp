@@ -250,7 +250,7 @@ mod test {
     use std::pin::Pin;
     use std::sync::Arc;
     use std::task::{Context, Poll};
-    use tokio::sync::{Mutex, RwLock};
+    use tokio::sync::Mutex;
     use tokio_util::sync::PollSender;
     use yrs::sync::awareness::AwarenessUpdateEntry;
     use yrs::sync::{Awareness, AwarenessUpdate, Error, Message, SyncMessage};
