@@ -96,9 +96,9 @@ impl From<SplitSink<WebSocket, Message>> for WarpSink {
     }
 }
 
-impl Into<SplitSink<WebSocket, Message>> for WarpSink {
-    fn into(self) -> SplitSink<WebSocket, Message> {
-        self.0
+impl From<WarpSink> for SplitSink<WebSocket, Message> {
+    fn from(value: WarpSink) -> Self {
+        value.0
     }
 }
 
@@ -197,9 +197,9 @@ impl From<SplitStream<WebSocket>> for WarpStream {
     }
 }
 
-impl Into<SplitStream<WebSocket>> for WarpStream {
-    fn into(self) -> SplitStream<WebSocket> {
-        self.0
+impl From<WarpStream> for SplitStream<WebSocket> {
+    fn from(value: WarpStream) -> Self {
+        value.0
     }
 }
 
@@ -373,7 +373,7 @@ mod test {
 
         let doc = Doc::new();
         let (n, _sub) = create_notifier(&doc);
-        let c1 = client("ws://localhost:6600/my-room", doc).await.unwrap();
+        let _c1 = client("ws://localhost:6600/my-room", doc).await.unwrap();
 
         {
             text.push(&mut awareness.doc().transact_mut(), "abc");
