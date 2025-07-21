@@ -1,6 +1,6 @@
 use futures_util::StreamExt;
 use std::sync::Arc;
-use tokio::sync::{Mutex, RwLock};
+use tokio::sync::Mutex;
 use warp::ws::{WebSocket, Ws};
 use warp::{Filter, Rejection, Reply};
 use yrs::sync::Awareness;
@@ -27,7 +27,7 @@ async fn main() {
 }"#,
             );
         }
-        Arc::new(RwLock::new(Awareness::new(doc)))
+        Arc::new(Awareness::new(doc))
     };
 
     // open a broadcast group that listens to awareness and document updates
